@@ -1,0 +1,29 @@
+.App {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  -webkit-columns: 1;
+  -moz-columns: 1;
+  columns: 1;
+}
+
+.Alert {
+  text-align: center;
+  margin-bottom: 20px;
+  display: inline-block;
+  width:100%;
+  align-items: center;
+}
+
+.Input {
+  text-align: center;
+  margin-bottom: 20px;
+  display: inline-block;
+  width:100%;
+  align-items: center;
+}
