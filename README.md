@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### `First step`
 Create react app.<br>
-Added display links.
-Added routing.
-Added iframe with links.
+Added display links.<br>
+
+### `Second step`
+Added routing.<br>
+Added iframe with links.<br>
