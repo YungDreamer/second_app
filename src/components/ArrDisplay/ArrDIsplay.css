@@ -1,0 +1,23 @@
+.sidebar {
+    height: 100%;
+    width: 33vw;
+    overflow: auto;
+    background: #eee;
+}
+
+.sidebarItem {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 5px 10px;
+}
+
+.main {
+    flex: 1;
+    height: 100%;
+    overflow: auto;
+    padding: 20px;
+}
+.root {
+    display: flex;
+}
