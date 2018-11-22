@@ -1,36 +1,33 @@
 import React, {Component} from 'react';
 
-import {BrowserRouter as Router, Link} from 'react-router-dom';
-import IFrame from '../IFrame/';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import Redirect from '../Redirect/';
 
 import './ArrDIsplay.css';
 
 export default class ArrDisplay extends Component {
     state = {
         hits: [],
-        images: [],
-        urlstate: ""
+        images: []
     };
 
-    getRoutingUrl =() => {
-        let url = window.location.pathname;
-        console.log(url);
-        this.setState({urlstate: window.location.pathname});
-    }
+    makeId = () => {
+        let text = "";
+        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    timeout = () => {
-        setTimeout(this.getRoutingUrl, 1);
-    }
+        for (let i = 0; i < 5; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        console.log(text);
+        return text;
+    };
 
     componentWillMount() {
         this.setState({
             hits: [{
-                site: 'ggkttd.by/'
+                site: 'ggkttd.by'
             }, {
-                site: 'komotoz.ru/kartinki/'
-            }]
-        });
-        this.setState({
+                site: 'komotoz.ru/kartinki'
+            }],
             images: [{
                 image: 'komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg'
             }, {
@@ -39,9 +36,7 @@ export default class ArrDisplay extends Component {
         })
     }
     render() {
-        const { hits } = this.state;
-        const { images } = this.state;
-        const { urlstate } = this.state;
+        const { hits, images } = this.state;
         return (
             <Router>
                 <div className={'root'}>
@@ -63,7 +58,7 @@ export default class ArrDisplay extends Component {
                     </div>
                     <div className={'main'}>
                         <h1>Welcome</h1>
-                        <IFrame url = {urlstate}></IFrame>
+                        <Route path="/sample/:link" component={Redirect}/>
                     </div>
                 </div>
             </Router>
