@@ -28,10 +28,11 @@ export default class ArrDisplay extends Component {
     };
 
     redirect = (q) => {
-        console.log(q);
-        //setTimeout(() => {window.open(q)}, 800);
-    }
-    
+        let url = q.target.id;
+        console.log(url);
+        setTimeout(() => {window.open(`http://${url}`)}, 800);
+    };
+         
     componentWillMount() {
         this.setState({
             hits: [
@@ -56,8 +57,8 @@ export default class ArrDisplay extends Component {
                     <div className={'sidebar'}>
                     {hits.map(hit =>
                         <div className={'sidebarItem'}>
-                            <Link to={`/${hit.ids}`} className={'test'} onClick={this.redirect(hit.site)} id={hit.ids}>
-                                <span>{hit.ids}</span>
+                            <Link to={`/${hit.ids}`} className={'test'} onClick={this.redirect} id={hit.site}>
+                                {hit.ids}
                             </Link>
                         </div>
                     )}                 
