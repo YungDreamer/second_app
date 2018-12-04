@@ -27,12 +27,12 @@ export default class ArrDisplay extends Component {
         })
     };
 
-    redirect = (q) => {
-        let url = q.target.id;
+    redirect = (e) => {
+        let url = e.target.id;
         console.log(url);
         setTimeout(() => {window.open(`http://${url}`)}, 800);
-    };
-         
+    };      
+    
     componentWillMount() {
         this.setState({
             hits: [
