@@ -28,6 +28,25 @@
   align-items: center;
 }
 
-.button.MuiButtonBase-root-57.MuiButton-root-31.MuiButton-contained-42.MuiButton-containedPrimary-43.MuiButton-raised-45.MuiButton-raisedPrimary-46 {
-  background-color: #61dafb;
+.MuiInputBase-root-14.MuiInput-root-1.MuiInput-underline-5 {
+  color: white;
+}
+
+.MuiInputBase-root-14.MuiInput-root-1.MuiInput-underline-5::before {
+  border-bottom: 1px solid white;
+}
+
+a.MuiButtonBase-root-57.MuiButton-root-31.MuiButton-contained-42.MuiButton-containedPrimary-43.MuiButton-raised-45.MuiButton-raisedPrimary-46 {
+  background-color: '';
+  color : #61dafb;
+  background-color: #282c34;
+  border: 1px solid #61dafb;
+}
+
+.root {
+  background-color: #282c34;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  color: white;
 }

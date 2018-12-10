@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Link} from 'react-router-dom';
 
 import './ArrDIsplay.css';
 
+
 export default class ArrDisplay extends Component {
     state = {
         hits: []
@@ -41,7 +42,23 @@ export default class ArrDisplay extends Component {
                 'ggkttd.by',            
                 'komotoz.ru/kartinki',           
                 'komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',          
-                'komotoz.ru/kartinki/images/prikolnie_kartinki_s_nadpisjami/prikolnie_kartinki_s_nadpisjami_01.jpg'
+                'komotoz.ru/kartinki/images/prikolnie_kartinki_s_nadpisjami/prikolnie_kartinki_s_nadpisjami_01.jpg',
+                'ggkttd.by',            
+                'komotoz.ru/kartinki',           
+                'komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
+                'ggkttd.by',            
+                'komotoz.ru/kartinki',           
+                'komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
+                'ggkttd.by',            
+                'komotoz.ru/kartinki',           
+                'komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
+                'ggkttd.by',            
+                'komotoz.ru/kartinki',           
+                'komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
+                'ggkttd.by',            
+                'komotoz.ru/kartinki',           
+                'komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
+                
             ]
         })
     };
@@ -55,19 +72,14 @@ export default class ArrDisplay extends Component {
 
         return (
             <Router>
-                <div className={'root'}>
-                    <div className={'sidebar'}>
+                <div className="root">
                     {hits.map((hit, i) =>
                         <div key={i} className={'sidebarItem'}>
-                            <Link to={`/display/${hit.id}`} className={'test'} onClick={() => this.redirect(hit.site)}>
+                            <Link to={`/display/${hit.id}`} onClick={() => this.redirect(hit.site)}>
                                 {this.domainName(hit.site)}
                             </Link>
                         </div>
-                    )}                 
-                    </div>
-                    <div className={'main'}>
-                        <h1>Welcome</h1>
-                    </div>
+                    )}              
                 </div>
             </Router>
         );
