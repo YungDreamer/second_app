@@ -22,16 +22,18 @@ export default class ArrDisplay extends Component {
         return hits.map((site) => {
             return {
             site: site,
-            ids: this.makeId()
+            id: this.makeId()
             }
         })
     };
 
-    redirect = (e) => {
-        let url = e.target.id;
-        console.log(url);
+    redirect = (url) => {
         setTimeout(() => {window.open(`http://${url}`)}, 800);
-    };      
+    }; 
+    
+    domainName = (url) => {
+        return url = url.split("/")[0];
+    };
     
     componentWillMount() {
         this.setState({
@@ -42,7 +44,7 @@ export default class ArrDisplay extends Component {
                 'komotoz.ru/kartinki/images/prikolnie_kartinki_s_nadpisjami/prikolnie_kartinki_s_nadpisjami_01.jpg'
             ]
         })
-    }
+    };
 
     render() {
         let { hits } = this.state;
@@ -57,8 +59,8 @@ export default class ArrDisplay extends Component {
                     <div className={'sidebar'}>
                     {hits.map(hit =>
                         <div className={'sidebarItem'}>
-                            <Link to={`/${hit.ids}`} className={'test'} onClick={this.redirect} id={hit.site}>
-                                {hit.ids}
+                            <Link to={`/${hit.id}`} className={'test'} onClick={() => this.redirect(hit.site)}>
+                                {this.domainName(hit.site)}
                             </Link>
                         </div>
                     )}                 
