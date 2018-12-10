@@ -57,9 +57,9 @@ export default class ArrDisplay extends Component {
             <Router>
                 <div className={'root'}>
                     <div className={'sidebar'}>
-                    {hits.map(hit =>
-                        <div className={'sidebarItem'}>
-                            <Link to={`/${hit.id}`} className={'test'} onClick={() => this.redirect(hit.site)}>
+                    {hits.map((hit, i) =>
+                        <div key={i} className={'sidebarItem'}>
+                            <Link to={`/display/${hit.id}`} className={'test'} onClick={() => this.redirect(hit.site)}>
                                 {this.domainName(hit.site)}
                             </Link>
                         </div>

@@ -1,0 +1,33 @@
+.post {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  -webkit-columns: 1;
+  -moz-columns: 1;
+  columns: 1;
+}
+
+.button {
+  text-align: center;
+  margin-bottom: 20px;
+  display: inline-block;
+  width:100%;
+  align-items: center;
+}
+
+.input {
+  text-align: center;
+  margin-bottom: 20px;
+  display: inline-block;
+  width:100%;
+  align-items: center;
+}
+
+.button.MuiButtonBase-root-57.MuiButton-root-31.MuiButton-contained-42.MuiButton-containedPrimary-43.MuiButton-raised-45.MuiButton-raisedPrimary-46 {
+  background-color: #61dafb;
+}
