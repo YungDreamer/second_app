@@ -10,9 +10,9 @@ export default class App extends Component {
         return (
             <Router>
                 <Switch>
-                    <Route exact path="/" component={StartPage} />
+                    <Route exact path="/" component={StartPage}/>
                     <Route path="/post" component={Post}/>
-                    <Route path="/display" component={ArrDisplay} />
+                    <Route path="/display" component={ArrDisplay}/>
                 </Switch>
             </Router>
         );

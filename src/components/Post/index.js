@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import { connect } from 'react-redux';
 
 import { Button } from '@material-ui/core';
 import Input from '../Post/input.js'
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import './Post.css'
 
-import createStore from '../../store.js';
-const store = createStore();
-
-
-export default  class StartPage extends Component {
+class Post extends Component {
     //onChange={({target: {value}}) => changeValue(value)}
     state = {
-        value: ''
+        value: '',
+        loading: false
     };
     
     onChange = (value) => {
@@ -21,43 +20,46 @@ export default  class StartPage extends Component {
     };
 
     send = (value) => {
-        const u2 = "http://mysmallwebpage.com/";
         const url = {
-            url: "http://mysmallwebpage.com/"
-          };
+            url: value
+        };
+
+        this.setState({loading: true});
 
         Axios.post('https://cassandraparseurl.herokuapp.com/parseUrlForAdvertisements', url )
         .then(res => {
-        console.log(res);
-        console.log(res.data);
-        console.log(res.status);
-        if (res.status === 200) document.location.href = "/display";
+            this.props.setLinks(res.data);
+            this.props.history.push('/display');
         })
+        .catch(() => this.setState({loading: false}))
     };
 
-    render() { 
+    render() {
     const {value} = this.state;
-    var action = {
-        type: 'SET_LINKS',
-        links: [
-            'http://ggkttd.by',            
-            'http://komotoz.ru/kartinki',           
-            'http://komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',          
-            'http://komotoz.ru/kartinki/images/prikolnie_kartinki_s_nadpisjami/prikolnie_kartinki_s_nadpisjami_01.jpg',
-        ]
-      };
-      store.dispatch(action)
+    console.log(this.state.links)
     return (
         <div className={'root'}>
         <div className={'post'}>
             <div className={'input'}>
-               <Input changeValue={this.onChange} inputValue={value}/>
+               <Input changeValue={this.onChange} inputValue={value} />
             </div>
             <div className={'button'}>
-                <Button onClick={() => this.send(value)} variant="contained" color="primary">SEND</Button>
+                {
+                    (this.state.loading) ? 
+                        (<CircularProgress color="secondary" className={'customAnimationClass'} />) :
+                        (<Button onClick={() => this.send(value)} variant="contained" color="primary" className={'customButtonClass'} >SEND</Button>)
+                }
             </div>    
         </div>
         </div>
         )
     }
 }    
+
+const mapDispatchToProps = dispatch => {
+    return {
+        setLinks: payload => dispatch({ type: "SET_LINKS", payload })
+    };
+};
+
+export default connect(null, mapDispatchToProps)(Post)

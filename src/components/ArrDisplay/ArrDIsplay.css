@@ -1,11 +1,18 @@
+.sidebarItems {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: wrap;
+}
+
 .sidebarItem {
-    width:110px; 
-    height:50px; 
+    min-width: 200px;
+    padding: 10px 20px;
+    height: 50px;
+    margin: 10px;
     border: solid 1px #61dafb;
-    float:left; 
-    margin: 0 15px 15px 0; 
-    padding-top: 25px;
-    text-align:center;
+    text-align: center;
+    line-height: 50px;
 }
 
 a {

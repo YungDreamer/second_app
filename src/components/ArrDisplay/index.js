@@ -21,8 +21,8 @@ class ArrDisplay extends Component {
     addId = ({ hits }) => {
         return hits.map((site) => {
             return {
-            site: site,
-            id: this.makeId()
+                site: site,
+                id: this.makeId()
             }
         })
     };
@@ -33,51 +33,32 @@ class ArrDisplay extends Component {
     
     domainName = (url) => {
         let u = new URL(url);
-        return u.hostname;
+        return u.hostname.replace('www.', '');
     };
 
-    
-    componentWillMount() {
-        this.setState({
-            hits: [
-                'http://ggkttd.by',            
-                'http://komotoz.ru/kartinki',           
-                'http://komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',          
-                'http://komotoz.ru/kartinki/images/prikolnie_kartinki_s_nadpisjami/prikolnie_kartinki_s_nadpisjami_01.jpg',
-                'http://ggkttd.by',            
-                'http://komotoz.ru/kartinki',           
-                'http://komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
-                'http://ggkttd.by',            
-                'http://komotoz.ru/kartinki',           
-                'http://komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
-                'http://ggkttd.by',            
-                'http://komotoz.ru/kartinki',           
-                'http://komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
-                'http://ggkttd.by',            
-                'http://komotoz.ru/kartinki',           
-                'http://komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
-                'http://ggkttd.by',            
-                'http://komotoz.ru/kartinki',           
-                'http://komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
-                
-            ]
+    componentDidMount() {
+        this.setState({hits: this.props.links}, () => {
+            return (this.state.hits.length === 0) ? this.props.history.push('/post') : null;
         })
     };
 
     render() {
         let { hits } = this.state;   
-        hits = this.addId({hits}); 
-        console.log(this.props.links);
+        console.log(this.props);
+        hits = this.addId({ hits: this.props.links }); 
+        
         return (
             <Router>
-                <div className="root">
-                    {hits.map((hit, i) =>
-                        <div key={i} className={'sidebarItem'}>
-                            <Link to={`/display/${hit.id}`} onClick={() => this.redirect(hit.site)}>
-                                {this.domainName(hit.site)}
-                            </Link>
-                        </div>
-                    )}              
+                <div className={"root"}>
+                    <div className={'sidebarItems'}>
+                        {hits.map((hit, i) =>
+                            <div key={i} className={'sidebarItem'}>
+                                <Link to={`/display/${hit.id}`} onClick={() => this.redirect(hit.site)}>
+                                    {this.domainName(hit.site)}
+                                </Link>
+                            </div>
+                        )}       
+                    </div>       
                 </div>
             </Router>
         );
@@ -85,9 +66,7 @@ class ArrDisplay extends Component {
 }
 
 function mapStateToProps (state) {
-    return {
-        links: state
-    }
+    return state
 }
 
 export default connect(mapStateToProps)(ArrDisplay)

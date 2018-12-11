@@ -36,11 +36,19 @@
   border-bottom: 1px solid white;
 }
 
-button.MuiButtonBase-root-57.MuiButton-root-31.MuiButton-contained-42.MuiButton-containedPrimary-43.MuiButton-raised-45.MuiButton-raisedPrimary-46 {
-  background-color: '';
-  color : #61dafb;
-  background-color: #282c34;
-  border: 1px solid #61dafb;
+.customInputClass {
+  color: white;
+  border-bottom: 1px solid white;
+}
+
+.customButtonClass {
+  color : #61dafb !important;
+  background-color: #282c34 !important;
+  border: 1px solid #61dafb !important;
+}
+
+.customAnimationClass {
+  color: #61dafb !important;
 }
 
 .root {
