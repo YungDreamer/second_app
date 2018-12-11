@@ -21,13 +21,12 @@ export default  class StartPage extends Component {
     };
 
     send = (value) => {
+        const u2 = "http://mysmallwebpage.com/";
         const url = {
             url: "http://mysmallwebpage.com/"
           };
 
-          const u2 = "http://mysmallwebpage.com/";
-
-        Axios.post('https://cassandraparseurl.herokuapp.com/parseUrlForAdvertisements', {url:url})
+        Axios.post('https://cassandraparseurl.herokuapp.com/parseUrlForAdvertisements', url )
         .then(res => {
         console.log(res);
         console.log(res.data);
