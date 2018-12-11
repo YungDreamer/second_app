@@ -29,46 +29,44 @@ export default class ArrDisplay extends Component {
     };
 
     redirect = (url) => {
-        setTimeout(() => {window.open(`http://${url}`)}, 800);
+        setTimeout(() => {window.open(url)}, 800);
     }; 
     
     domainName = (url) => {
-        return url = url.split("/")[0];
+        let u = new URL(url);
+        return u.hostname;
     };
     
     componentWillMount() {
         this.setState({
             hits: [
-                'ggkttd.by',            
-                'komotoz.ru/kartinki',           
-                'komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',          
-                'komotoz.ru/kartinki/images/prikolnie_kartinki_s_nadpisjami/prikolnie_kartinki_s_nadpisjami_01.jpg',
-                'ggkttd.by',            
-                'komotoz.ru/kartinki',           
-                'komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
-                'ggkttd.by',            
-                'komotoz.ru/kartinki',           
-                'komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
-                'ggkttd.by',            
-                'komotoz.ru/kartinki',           
-                'komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
-                'ggkttd.by',            
-                'komotoz.ru/kartinki',           
-                'komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
-                'ggkttd.by',            
-                'komotoz.ru/kartinki',           
-                'komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
+                'http://ggkttd.by',            
+                'http://komotoz.ru/kartinki',           
+                'http://komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',          
+                'http://komotoz.ru/kartinki/images/prikolnie_kartinki_s_nadpisjami/prikolnie_kartinki_s_nadpisjami_01.jpg',
+                'http://ggkttd.by',            
+                'http://komotoz.ru/kartinki',           
+                'http://komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
+                'http://ggkttd.by',            
+                'http://komotoz.ru/kartinki',           
+                'http://komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
+                'http://ggkttd.by',            
+                'http://komotoz.ru/kartinki',           
+                'http://komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
+                'http://ggkttd.by',            
+                'http://komotoz.ru/kartinki',           
+                'http://komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
+                'http://ggkttd.by',            
+                'http://komotoz.ru/kartinki',           
+                'http://komotoz.ru/kartinki/images/prikolnie_kartinki_s_kotami/prikolnie_kartinki_s_kotami_04.jpg',
                 
             ]
         })
     };
 
     render() {
-        let { hits } = this.state;
-        console.log(hits);
-         
+        let { hits } = this.state;   
         hits = this.addId({hits}); 
-        console.log(hits);
 
         return (
             <Router>
