@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-
 import {BrowserRouter as Router, Link} from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './ArrDIsplay.css';
 
-
-export default class ArrDisplay extends Component {
+class ArrDisplay extends Component {
     state = {
         hits: []
     };
@@ -36,6 +35,7 @@ export default class ArrDisplay extends Component {
         let u = new URL(url);
         return u.hostname;
     };
+
     
     componentWillMount() {
         this.setState({
@@ -67,7 +67,7 @@ export default class ArrDisplay extends Component {
     render() {
         let { hits } = this.state;   
         hits = this.addId({hits}); 
-
+        console.log(this.props.links);
         return (
             <Router>
                 <div className="root">
@@ -83,3 +83,11 @@ export default class ArrDisplay extends Component {
         );
     }
 }
+
+function mapStateToProps (state) {
+    return {
+        links: state
+    }
+}
+
+export default connect(mapStateToProps)(ArrDisplay)
