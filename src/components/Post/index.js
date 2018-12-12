@@ -9,7 +9,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import './Post.css'
 
 class Post extends Component {
-    //onChange={({target: {value}}) => changeValue(value)}
     state = {
         value: '',
         loading: false
@@ -20,12 +19,8 @@ class Post extends Component {
     };
 
     send = (value) => {
-        const url = {
-            url: value
-        };
-
+        const url = { url: value };
         this.setState({loading: true});
-
         Axios.post('https://cassandraparseurl.herokuapp.com/parseUrlForAdvertisements', url )
         .then(res => {
             this.props.setLinks(res.data);
@@ -35,12 +30,8 @@ class Post extends Component {
     };
 
     send2 = (value) => {
-        const url = {
-            url: value
-        };
-
+        const url = { url: value };
         this.setState({loading: true});
-
         Axios.post('https://cassandraparseurl.herokuapp.com/getAllLinkedImages', url )
         .then(res => {
             this.props.setLinks(res.data);
