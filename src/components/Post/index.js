@@ -43,7 +43,6 @@ class Post extends Component {
 
         Axios.post('https://cassandraparseurl.herokuapp.com/getAllLinkedImages', url )
         .then(res => {
-            console.log(res.data);
             this.props.setLinks(res.data);
             this.props.history.push('/display');
         })
@@ -52,7 +51,6 @@ class Post extends Component {
 
     render() {
     const {value} = this.state;
-    console.log(this.state.links)
     return (
         <div className={'root'}>
         <div className={'post'}>

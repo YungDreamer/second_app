@@ -38,10 +38,10 @@ class ArrDisplay extends Component {
     };
 
     componentWillMount() {
-        const { hits } = this.state;
         const { links, images } = this.props.links;
         this.setState({hits: links, images: images}, () => {
-            return (hits.length === 0) ? this.props.history.push('/post') : null;
+            console.log(this.state.hits);
+            return (!this.state.hits) ? this.props.history.push('/post') : null;
         })
     };
 
@@ -57,7 +57,7 @@ class ArrDisplay extends Component {
                         <div className={'sidebarLabel'}>Images:</div>
                         {
                             images && images.map((img, i) =>
-                                <img key={i} src={img} alt={i} className={'sidebarItemImage'} />
+                                <img key={i} src={img} className={'sidebarItemImage'} />
                             )
                         }       
                     </div>    
