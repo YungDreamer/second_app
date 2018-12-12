@@ -53,7 +53,7 @@ class ArrDisplay extends Component {
             <Router>
                 <div className={"root"}>
                     <div className={'sidebarItems'}>
-                        <div className={'sidebarLabel'}>Image:</div>
+                        <div className={'sidebarLabel'}>Images:</div>
                         {images.map((img, i) =>
                                 <img key={i} src={img} className={'sidebarItemImage'}></img>
                         )}       
