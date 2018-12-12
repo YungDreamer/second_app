@@ -6,7 +6,8 @@ import './ArrDIsplay.css';
 
 class ArrDisplay extends Component {
     state = {
-        hits: []
+        hits: [],
+        images: []
     };
 
     makeId = () => {
@@ -37,20 +38,28 @@ class ArrDisplay extends Component {
     };
 
     componentDidMount() {
-        this.setState({hits: this.props.links}, () => {
+        this.setState({hits: this.props.links.links, images: this.props.links.images}, () => {
             return (this.state.hits.length === 0) ? this.props.history.push('/post') : null;
         })
     };
 
     render() {
-        let { hits } = this.state;   
+        let { hits, images } = this.state;   
         console.log(this.props);
-        hits = this.addId({ hits: this.props.links }); 
-        
+        hits = this.addId({ hits: this.props.links.links });
+        images = this.props.links.images;
+         
         return (
             <Router>
                 <div className={"root"}>
                     <div className={'sidebarItems'}>
+                        <div className={'sidebarLabel'}>Image:</div>
+                        {images.map((img, i) =>
+                                <img key={i} src={img} className={'sidebarItemImage'}></img>
+                        )}       
+                    </div>    
+                    <div className={'sidebarItems'}>
+                        <div className={'sidebarLabel'}>Links:</div>
                         {hits.map((hit, i) =>
                             <div key={i} className={'sidebarItem'}>
                                 <Link to={`/display/${hit.id}`} onClick={() => this.redirect(hit.site)}>
