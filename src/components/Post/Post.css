@@ -36,9 +36,8 @@
   border-bottom: 1px solid white;
 }
 
-.customInputClass {
-  color: white;
-  border-bottom: 1px solid white;
+.MuiInput-underline-5:after {
+  border-bottom: 1px solid white !important;
 }
 
 .customButtonClass {
