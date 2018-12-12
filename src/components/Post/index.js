@@ -40,6 +40,18 @@ class Post extends Component {
         .catch(() => this.setState({loading: false}))
     };
 
+    send3 = (value) => {
+        const url = { url: value };
+        this.setState({loading: true});
+        Axios.post('http://parse.vostlerts.by/parse.php', url )
+        .then(res => {
+            console.log(res.data);
+            this.props.setLinks(res.data);
+            this.props.history.push('/display');
+        })
+        .catch(() => this.setState({loading: false}))
+    };
+
     render() {
     const {value} = this.state;
     return (
