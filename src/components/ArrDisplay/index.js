@@ -20,7 +20,7 @@ class ArrDisplay extends Component {
     };
 
     addId = ({ hits }) => {
-        return hits.map((site) => {
+        return hits && hits.map((site) => {
             return {
                 site: site,
                 id: this.makeId()
@@ -37,15 +37,16 @@ class ArrDisplay extends Component {
         return u.hostname.replace('www.', '');
     };
 
-    componentDidMount() {
-        this.setState({hits: this.props.links.links, images: this.props.links.images}, () => {
-            return (this.state.hits.length === 0) ? this.props.history.push('/post') : null;
+    componentWillMount() {
+        const { hits } = this.state;
+        const { links, images } = this.props.links;
+        this.setState({hits: links, images: images}, () => {
+            return (hits.length === 0) ? this.props.history.push('/post') : null;
         })
     };
 
     render() {
-        let { hits, images } = this.state;   
-        console.log(this.props);
+        let { hits, images } = this.state; 
         hits = this.addId({ hits: this.props.links.links });
         images = this.props.links.images;
          
@@ -54,13 +55,15 @@ class ArrDisplay extends Component {
                 <div className={"root"}>
                     <div className={'sidebarItems'}>
                         <div className={'sidebarLabel'}>Images:</div>
-                        {images.map((img, i) =>
-                                <img key={i} src={img} className={'sidebarItemImage'}></img>
-                        )}       
+                        {
+                            images && images.map((img, i) =>
+                                <img key={i} src={img} alt={i} className={'sidebarItemImage'} />
+                            )
+                        }       
                     </div>    
                     <div className={'sidebarItems'}>
                         <div className={'sidebarLabel'}>Links:</div>
-                        {hits.map((hit, i) =>
+                        {hits && hits.map((hit, i) =>
                             <div key={i} className={'sidebarItem'}>
                                 <Link to={`/display/${hit.id}`} onClick={() => this.redirect(hit.site)}>
                                     {this.domainName(hit.site)}
