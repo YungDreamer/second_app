@@ -57,7 +57,7 @@ class ArrDisplay extends Component {
                         <div className={'sidebarLabel'}>Images:</div>
                         {
                             images && images.map((img, i) =>
-                                <img key={i} src={img} className={'sidebarItemImage'} />
+                                <img key={i} alt={img} src={img} className={'sidebarItemImage'} />
                             )
                         }       
                     </div>    

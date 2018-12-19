@@ -1,15 +1,8 @@
 .post {
-  width: 250px;
-  height: 250px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  -webkit-columns: 1;
-  -moz-columns: 1;
-  columns: 1;
+  margin: 0 0 50px 0;
+}
+
+.history {
 }
 
 .button {
@@ -28,16 +21,19 @@
   align-items: center;
 }
 
-.MuiInputBase-root-14.MuiInput-root-1.MuiInput-underline-5 {
+.input input:hover, .input input:focus, .input input {
   color: white;
-}
-
-.MuiInputBase-root-14.MuiInput-root-1.MuiInput-underline-5::before {
   border-bottom: 1px solid white;
+  background-color: transparent;
+  outline: none;
 }
 
-.MuiInput-underline-5:after {
-  border-bottom: 1px solid white !important;
+input {
+  border: none;
+}
+
+.error div {
+  background-color: #d32f2f !important;
 }
 
 .customButtonClass {
@@ -56,4 +52,8 @@
   min-height: 100vh;
   width: 100%;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
