@@ -1,31 +1,22 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import Input from '../Input'
-import Alert from '../Alert';
-
-import './App.css';
+import History from '../History';
+import StartPage from '../StartPage/';
+import Post from '../Post/';
+import ArrDisplay from '../ArrDisplay/';
 
 export default class App extends Component {
-    state = {
-        value: ''
-    };
-
-    onChange = (value) => {
-        this.setState({value: value});
-    };
-
-
     render() {
-        const {value} = this.state;
         return (
-            <div className="App">
-                <div className="Input">
-                    <Input changeValue={this.onChange} inputValue={value}/>
-                </div>
-                <div className="Alert">
-                    <Alert inputValue={value}/>
-                </div>
-            </div>
+            <Router>
+                <Switch>
+                    <Route exact path="/" component={StartPage}/>
+                    <Route path="/post" component={Post}/>
+                    <Route path="/display" component={ArrDisplay}/>
+                    <Route path="/history" component={History}/>
+                </Switch>
+            </Router>
         );
     }
 }

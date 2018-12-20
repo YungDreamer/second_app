@@ -4,13 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### `First step`
 Create react app.<br>
-Added Material-ui button and input.
+Added display links.<br>
 
 ### `Second step`
-Get data from input.<br>
-View data in allert.
-
-### `Third step`
-Use API [OpenWeatherMap](https://openweathermap.org/api).<br>
-Inputing city name.<br>
-View weather in alert.
+Added routing.<br>
+Added iframe with links.<br>

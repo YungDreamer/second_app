@@ -1,0 +1,59 @@
+.post {
+  margin: 0 0 50px 0;
+}
+
+.history {
+}
+
+.button {
+  text-align: center;
+  margin-bottom: 20px;
+  display: inline-block;
+  width:100%;
+  align-items: center;
+}
+
+.input {
+  text-align: center;
+  margin-bottom: 20px;
+  display: inline-block;
+  width:100%;
+  align-items: center;
+}
+
+.input input:hover, .input input:focus, .input input {
+  color: white;
+  border-bottom: 1px solid white;
+  background-color: transparent;
+  outline: none;
+}
+
+input {
+  border: none;
+}
+
+.error div {
+  background-color: #d32f2f !important;
+}
+
+.customButtonClass {
+  color : #61dafb !important;
+  background-color: #282c34 !important;
+  border: 1px solid #61dafb !important;
+}
+
+.customAnimationClass {
+  color: #61dafb !important;
+}
+
+.root {
+  background-color: #282c34;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

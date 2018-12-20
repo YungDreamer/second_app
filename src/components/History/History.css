@@ -1,0 +1,52 @@
+.root {
+  background-color: #282c34;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  color: white;
+}
+
+.root:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.sidebarLabel {
+  color: #61dafb;
+  min-width: 94%;
+  text-align: left;
+  font-size: 30px;
+  margin: 20px;
+  padding-left: 20px;
+}
+
+.sidebarItems {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-flow: wrap;
+}
+
+.customButtonClass1 {
+  color : #61dafb !important;
+  background-color: #282c34 !important;
+  border: 1px solid #61dafb !important;
+  margin-left: 40px !important;
+}
+
+.sidebarItem {
+  min-width: 200px;
+  padding: 10px 20px;
+  height: 50px;
+  margin: 10px;
+  border: solid 1px #61dafb;
+  text-align: center;
+  line-height: 50px;
+}
+
+a {
+  text-decoration: none;
+  color: #61dafb;
+}
+  
