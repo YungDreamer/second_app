@@ -40,7 +40,6 @@ class ArrDisplay extends Component {
     componentWillMount() {
         const { links, images } = this.props.links;
         this.setState({hits: links, images: images}, () => {
-            console.log(this.state.hits);
             return (!this.state.hits) ? this.props.history.push('/post') : null;
         })
     };

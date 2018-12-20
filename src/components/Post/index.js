@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import { connect } from 'react-redux';
-import {BrowserRouter as Router, Link} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import Snackbar from '@material-ui/core/Snackbar';
 import { Button } from '@material-ui/core';
@@ -38,7 +38,7 @@ class Post extends Component {
                     throw {
                         response: {
                             data: {
-                                error: "no links"
+                                error: "No links"
                             }
                         }
                     }
@@ -54,8 +54,7 @@ class Post extends Component {
 
 
     render() {
-        const { value, open, errorMessage, history } = this.state;
-        console.log(history);
+        const { value, open, errorMessage } = this.state;
         return (
             <Router>
             <div className={'root'}>
