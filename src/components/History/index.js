@@ -7,7 +7,7 @@ import { Button } from '@material-ui/core';
 
 import './History.css'
 
-class Post extends Component {
+class History extends Component {
     state = {
         history: []
     };
@@ -74,4 +74,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(null, mapDispatchToProps)(Post)
+export default connect(null, mapDispatchToProps)(History)

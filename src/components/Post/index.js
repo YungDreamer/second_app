@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import Snackbar from '@material-ui/core/Snackbar';
 import { Button } from '@material-ui/core';
+
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import './Post.css'
@@ -46,7 +47,7 @@ class Post extends Component {
                 this.props.history.push('/display');
             })
             .catch(error => {
-                this.setState({ loading: false , errorMessage: error.response.data.error });
+                this.setState({ loading: false, errorMessage: error.response.data.error });
                 this.handleClick();
             })
     };
@@ -57,36 +58,36 @@ class Post extends Component {
         const { value, open, errorMessage } = this.state;
         return (
             <Router>
-            <div className={'root'}>
-                <div className={'post'}>
-                    <div className={'input'}>
-                        <input type={'text'} onChange={({ target: { value } }) => this.onChange(value)}></input>
+                <div className={'root'}>
+                    <div className={'post'}>
+                        <div className={'input'}>
+                            <input type={'text'} onChange={({ target: { value } }) => this.onChange(value)}></input>
+                        </div>
+                        <div className={'button'}>
+                            {
+                                (this.state.loading) ?
+                                    (<CircularProgress color="secondary" className={'customAnimationClass'} />) :
+                                    (<Button onClick={() => this.send(value)} variant="contained" color="primary" className={'customButtonClass'} >SEND</Button>)
+                            }
+                            <Snackbar
+                                className={'error'}
+                                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+                                open={open}
+                                onClose={this.handleClose}
+                                ContentProps={{
+                                    'aria-describedby': 'message-id',
+                                }}
+                                autoHideDuration={3000}
+                                message={<span id="message-id">{errorMessage}</span>}
+                            />
+                        </div>
                     </div>
-                    <div className={'button'}>
-                        {
-                            (this.state.loading) ?
-                                (<CircularProgress color="secondary" className={'customAnimationClass'} />) :
-                                (<Button onClick={() => this.send(value)} variant="contained" color="primary" className={'customButtonClass'} >SEND</Button>)
-                        }
-                        <Snackbar
-                            className={'error'}
-                            anchorOrigin={{ vertical:'bottom', horizontal:'center' }}
-                            open={open}
-                            onClose={this.handleClose}
-                            ContentProps={{
-                                'aria-describedby': 'message-id',
-                            }}
-                            autoHideDuration={3000}
-                            message={<span id="message-id">{errorMessage}</span>}
-                        />
-                    </div>
-                </div>
-                <div className={'history'}>
-                    <Button onClick={() => {this.props.history.push('/history')}} variant="contained" color="primary" className={'customButtonClass'} >
-                        HISTORY
+                    <div className={'history'}>
+                        <Button onClick={() => { this.props.history.push('/history') }} variant="contained" color="primary" className={'customButtonClass'} >
+                            HISTORY
                     </Button>
+                    </div>
                 </div>
-            </div>
             </Router>
         )
     }
