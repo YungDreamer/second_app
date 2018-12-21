@@ -48,7 +48,6 @@ class ArrDisplay extends Component {
         let { hits, images } = this.state;
         hits = this.addId({ hits: this.props.links.links });
         images = this.props.links.images;
-
         return (
             <Router>
                 <div className={"root"}>

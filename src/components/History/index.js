@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 import { Button } from '@material-ui/core';
 
 import './History.css'
 
-class History extends Component {
+export default class History extends Component {
     state = {
         history: []
     };
@@ -33,15 +32,6 @@ class History extends Component {
         return u.hostname.replace('www.', '');
     };
 
-    send = (value) => {
-        const url = { url: value };
-        Axios.post('https://cassandraparseurl.herokuapp.com/getAllLinkedImages', url)
-            .then(res => {
-                this.props.setLinks(res.data);
-                this.props.history.push('/display');
-            })
-    };
-
     render() {
         const { history } = this.state;
         return (
@@ -56,8 +46,11 @@ class History extends Component {
                         {
                             history.map((hist, i) =>
                                 (
-                                    <div key={i} className={'sidebarItem'} onClick={() => this.send(hist.rootUrl)}>
-                                        {i}: {this.domainName(hist.rootUrl)}
+                                    <div key={i} className={'sidebarItem1'} >
+                                        <a href={hist.url} target={'_blank'} >
+                                        RootUrl: {this.domainName(hist.rootUrl)}<br/>
+                                        Url: {this.domainName(hist.url)}
+                                        </a>
                                     </div>
                                 )
                             )}
@@ -67,11 +60,3 @@ class History extends Component {
         )
     }
 }
-
-const mapDispatchToProps = dispatch => {
-    return {
-        setLinks: payload => dispatch({ type: "SET_LINKS", payload })
-    };
-};
-
-export default connect(null, mapDispatchToProps)(History)

@@ -42,7 +42,7 @@ class Post extends Component {
                                 error: "No links"
                             }
                         }
-                    }
+                    };
                 this.props.setLinks(res.data);
                 this.props.history.push('/display');
             })
