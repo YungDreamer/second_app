@@ -30,10 +30,48 @@ class Post extends Component {
         this.setState({ value: value });
     };
 
+    getIp = () => {
+
+    };
+
+    isPrivate = () => {
+        var c = document.querySelector('#check');
+        if (c.checked) {
+        alert( 'чекбокс включён' );
+        } else {
+        alert( 'чекбокс выключён' );
+        }
+    };
+
     send = (value) => {
         const url = { url: value };
+        const isPrivate = { isPrivate: true };
+        const data = { url: value, isPrivate: true }
         this.setState({ loading: true });
-        Axios.post('https://cassandraparseurl.herokuapp.com/getAllLinkedImages', url)
+        var c = document.querySelector('#check');
+        if (c.checked) {
+            console.log(c.checked);
+            Axios.post('https://cassandraparseurl.herokuapp.com/getAllLinkedImages', data)
+            .then(res => {
+                if (res.data.links.length === 0)
+                    throw {
+                        response: {
+                            data: {
+                                error: "No links"
+                            }
+                        }
+                    };
+                console.log(res.data);    
+                this.props.setLinks(res.data);
+                this.props.history.push('/display');
+            })
+            .catch(error => {
+                this.setState({ loading: false, errorMessage: error.response.data.error });
+                this.handleClick();
+            })
+        } else {
+            console.log(c.checked)
+            Axios.post('https://cassandraparseurl.herokuapp.com/getAllLinkedImages', url)
             .then(res => {
                 if (res.data.links.length === 0)
                     throw {
@@ -50,6 +88,8 @@ class Post extends Component {
                 this.setState({ loading: false, errorMessage: error.response.data.error });
                 this.handleClick();
             })
+        }
+        
     };
 
 
@@ -62,6 +102,7 @@ class Post extends Component {
                     <div className={'post'}>
                         <div className={'input'}>
                             <input type={'text'} onChange={({ target: { value } }) => this.onChange(value)}></input>
+                            <input type="checkbox" name="check" value="check" id="check" onClick={() => this.isPrivate()}/>Private
                         </div>
                         <div className={'button'}>
                             {
