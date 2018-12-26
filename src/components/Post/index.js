@@ -34,23 +34,12 @@ class Post extends Component {
 
     };
 
-    isPrivate = () => {
-        var c = document.querySelector('#check');
-        if (c.checked) {
-        alert( 'чекбокс включён' );
-        } else {
-        alert( 'чекбокс выключён' );
-        }
-    };
-
     send = (value) => {
         const url = { url: value };
-        const isPrivate = { isPrivate: true };
         const data = { url: value, isPrivate: true }
         this.setState({ loading: true });
         var c = document.querySelector('#check');
         if (c.checked) {
-            console.log(c.checked);
             Axios.post('https://cassandraparseurl.herokuapp.com/getAllLinkedImages', data)
             .then(res => {
                 if (res.data.links.length === 0)
@@ -60,8 +49,7 @@ class Post extends Component {
                                 error: "No links"
                             }
                         }
-                    };
-                console.log(res.data);    
+                    };   
                 this.props.setLinks(res.data);
                 this.props.history.push('/display');
             })
@@ -92,8 +80,6 @@ class Post extends Component {
         
     };
 
-
-
     render() {
         const { value, open, errorMessage } = this.state;
         return (
@@ -102,7 +88,7 @@ class Post extends Component {
                     <div className={'post'}>
                         <div className={'input'}>
                             <input type={'text'} onChange={({ target: { value } }) => this.onChange(value)}></input>
-                            <input type="checkbox" name="check" value="check" id="check" onClick={() => this.isPrivate()}/>Private
+                            <input type="checkbox" name="check" value="check" id="check"/>Private
                         </div>
                         <div className={'button'}>
                             {
